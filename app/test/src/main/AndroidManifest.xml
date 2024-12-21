@@ -8,6 +8,10 @@
         <uses-library android:name="android.test.runner" />
     </application>
 
+    <queries tools:node="replace">
+        <package android:name="com.android.shell" />
+    </queries>
+
     <instrumentation
         android:name="com.topjohnwu.magisk.test.TestRunner"
         android:targetPackage="com.topjohnwu.magisk"

@@ -1,6 +1,5 @@
 package com.topjohnwu.magisk.test
 
-import androidx.annotation.Keep
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.topjohnwu.magisk.core.Info
 import com.topjohnwu.magisk.core.utils.RootUtils
@@ -10,7 +9,6 @@ import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@Keep
 @RunWith(AndroidJUnit4::class)
 class MagiskAppTest {
 

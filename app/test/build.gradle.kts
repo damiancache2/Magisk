@@ -21,4 +21,5 @@ dependencies {
     implementation(libs.test.runner)
     implementation(libs.test.rules)
     implementation(libs.test.junit)
+    implementation(libs.test.uiautomator)
 }
