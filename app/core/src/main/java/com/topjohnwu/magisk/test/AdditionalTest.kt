@@ -1,14 +1,13 @@
 package com.topjohnwu.magisk.test
 
 import android.app.UiAutomation
-import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.Until
 import org.junit.After
-import org.junit.Assert
+import org.junit.Assert.assertNotNull
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +16,7 @@ import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
 
 @RunWith(AndroidJUnit4::class)
-class LsposedTest {
+class AdditionalTest {
 
     companion object {
         private const val SHELL_PKG = "com.android.shell"
@@ -25,14 +24,12 @@ class LsposedTest {
         private const val LSPOSED_PKG = "org.lsposed.manager"
     }
 
-    private lateinit var context: Context
     private lateinit var uiAutomation: UiAutomation
     private lateinit var device: UiDevice
 
     @Before
     fun setup() {
         val inst = InstrumentationRegistry.getInstrumentation()
-        context = inst.context
         uiAutomation = inst.uiAutomation
         device = UiDevice.getInstance(inst)
     }
@@ -43,14 +40,14 @@ class LsposedTest {
     }
 
     @Test
-    fun testLaunchManager() {
+    fun testLaunchLsposedManager() {
         assumeTrue(Environment.lsposed())
 
         uiAutomation.executeShellCommand(
             "am start -c $LSPOSED_CATEGORY $SHELL_PKG/.BugreportWarningActivity"
         )
         val pattern = Pattern.compile("$LSPOSED_PKG:id/.*")
-        Assert.assertNotNull(
+        assertNotNull(
             "LSPosed manager launch failed",
             device.wait(Until.hasObject(By.res(pattern)), TimeUnit.SECONDS.toMillis(10))
         )
