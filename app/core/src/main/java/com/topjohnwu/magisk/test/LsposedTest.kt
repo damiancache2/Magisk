@@ -8,7 +8,7 @@ import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.Until
 import org.junit.After
-import org.junit.Assert.assertNotNull
+import org.junit.Assert
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
@@ -50,7 +50,7 @@ class LsposedTest {
             "am start -c $LSPOSED_CATEGORY $SHELL_PKG/.BugreportWarningActivity"
         )
         val pattern = Pattern.compile("$LSPOSED_PKG:id/.*")
-        assertNotNull(
+        Assert.assertNotNull(
             "LSPosed manager launch failed",
             device.wait(Until.hasObject(By.res(pattern)), TimeUnit.SECONDS.toMillis(10))
         )
